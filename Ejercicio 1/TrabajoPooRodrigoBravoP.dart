@@ -105,6 +105,43 @@ class Auto extends TraccionaMotor implements Licencia {
   }
 }
 
+class Camion extends TraccionaMotor implements Licencia {
+  Camion(String nombre, String color, double precio, int capacidadTransporte)
+      : super(nombre, color, precio, capacidadTransporte) {
+    this._nombre = nombre;
+    this._color = color;
+    this._precio = precio;
+    this._capacidadTransporte = capacidadTransporte;
+  }
+
+  @override
+  void DefinicionVehiculo() {
+    print(
+        "Vehículo automóvil de cuatro ruedas o mas ruedas para circular por tierra, que se dirige mediante un volante, está destinado al transporte de personas y tiene capacidad para un máximo de nueve plazas.\n");
+  }
+
+  @override
+  void EdadMinima() {
+    print("20 años");
+  }
+
+  @override
+  void Requerida() {
+    print("Si");
+  }
+
+  @override
+  void TipoDeLicencia() {
+    print("Licencia Clase A5 o A4");
+  }
+
+  @override
+  void ValorDeLicencia() {
+    print(
+        "220.000 clp, debido a que se necesita curso de conduccion profesional");
+  }
+}
+
 class Moto extends TraccionaMotor implements Licencia {
   Moto(String nombre, String color, double precio, int capacidadTransporte)
       : super(nombre, color, precio, capacidadTransporte) {
@@ -173,7 +210,7 @@ class Bicicleta extends TraccionaHumana implements Licencia {
 
   @override
   void TipoDeLicencia() {
-    print("No tiene");
+    print("No tiene.");
   }
 
   @override
@@ -183,7 +220,52 @@ class Bicicleta extends TraccionaHumana implements Licencia {
 
   @override
   void EdadMinima() {
-    print("Indefinido por la ley chilena.")
+    print("Indefinido por la ley chilena.");
+  }
+}
+
+class Velomovil extends TraccionaHumana implements Licencia {
+  String _pedales;
+
+  Velomovil(String nombre, String color, double precio, int capacidadTransporte,
+      String pedales)
+      : super(nombre, color, precio, capacidadTransporte) {
+    this._nombre = nombre;
+    this._color = color;
+    this._precio = precio;
+    this._capacidadTransporte = capacidadTransporte;
+    this._pedales = pedales;
+  }
+  //Setters
+  set MaterialPedales(String pedales) => this._pedales = pedales;
+
+  //Getters
+  String get MaterialPedales => _pedales;
+
+  @override
+  void DefinicionVehiculo() {
+    print(
+        "El velomóvil, velomobile o bicicleta coche es un vehículo de tracción humana que incluye una carrocería aerodinámica que favorece su avance y la protección contra las colisiones y los agentes atmosféricos, como la lluvia o la nieve. Es la evolución de las bicicletas con silla y triciclos, con la adición de una carrocería aerodinámica, alcanza mas de 100km/h.\n");
+  }
+
+  @override
+  void EdadMinima() {
+    print("18 años.");
+  }
+
+  @override
+  void Requerida() {
+    print("Si.");
+  }
+
+  @override
+  void ValorDeLicencia() {
+    print("Costo que va entre los 20.000 y los 40.000 clp.");
+  }
+
+  @override
+  void TipoDeLicencia() {
+    print("Clase C.");
   }
 }
 

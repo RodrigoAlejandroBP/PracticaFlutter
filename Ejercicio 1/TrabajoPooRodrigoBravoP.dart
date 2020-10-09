@@ -10,14 +10,13 @@ import 'dart:collection';
 
 abstract class Leyes {
   void DefinicionVehiculo();
+  void EdadMinima();
 }
 
 abstract class Licencia {
+  void TipoDeLicencia();
+  void ValorDeLicencia();
   void Requerida();
-}
-
-abstract class Ruedas {
-  int GetNumeroRuedas();
 }
 
 ///////////////////////////
@@ -70,7 +69,7 @@ abstract class TraccionaHumana extends Vehiculo {
 //Clases  (eslavon mas bajo)          //////
 ///////////////////////////////////////////
 
-class Auto extends TraccionaMotor implements Ruedas, Licencia {
+class Auto extends TraccionaMotor implements Licencia {
   Auto(String nombre, String color, double precio, int capacidadTransporte)
       : super(nombre, color, precio, capacidadTransporte) {
     this._nombre = nombre;
@@ -86,17 +85,27 @@ class Auto extends TraccionaMotor implements Ruedas, Licencia {
   }
 
   @override
-  int GetNumeroRuedas() {
-    return 4;
+  void ValorDeLicencia() {
+    print("Costo que va entre los 20.000 y los 40.000 clp");
+  }
+
+  @override
+  void TipoDeLicencia() {
+    print("Clase B");
   }
 
   @override
   void Requerida() {
     print("Si.");
   }
+
+  @override
+  void EdadMinima() {
+    print("18 años");
+  }
 }
 
-class Moto extends TraccionaMotor implements Ruedas, Licencia {
+class Moto extends TraccionaMotor implements Licencia {
   Moto(String nombre, String color, double precio, int capacidadTransporte)
       : super(nombre, color, precio, capacidadTransporte) {
     this._nombre = nombre;
@@ -112,17 +121,27 @@ class Moto extends TraccionaMotor implements Ruedas, Licencia {
   }
 
   @override
-  int GetNumeroRuedas() {
-    return 2;
+  void ValorDeLicencia() {
+    print("Costo que va entre los 20.000 y los 40.000 clp");
+  }
+
+  @override
+  void TipoDeLicencia() {
+    print("clase C");
   }
 
   @override
   void Requerida() {
     print("Si.");
   }
+
+  @override
+  void EdadMinima() {
+    print("18 años");
+  }
 }
 
-class Bicicleta extends TraccionaHumana implements Ruedas, Licencia {
+class Bicicleta extends TraccionaHumana implements Licencia {
   String _pedales;
 
   Bicicleta(String nombre, String color, double precio, int capacidadTransporte,
@@ -142,19 +161,29 @@ class Bicicleta extends TraccionaHumana implements Ruedas, Licencia {
   String get MaterialPedales => _pedales;
 
   @override
-  int GetNumeroRuedas() {
-    return 2;
-  }
-
-  @override
   void DefinicionVehiculo() {
     print(
         "Ciclo de dos ruedas cuyos pedales transmiten el movimiento a la rueda trasera, generalmente por medio de un plato, un piñón y una cadena.\n");
   }
 
   @override
+  void ValorDeLicencia() {
+    print("No tiene");
+  }
+
+  @override
+  void TipoDeLicencia() {
+    print("No tiene");
+  }
+
+  @override
   void Requerida() {
     print("Si.");
+  }
+
+  @override
+  void EdadMinima() {
+    print("Indefinido por la ley chilena.")
   }
 }
 
